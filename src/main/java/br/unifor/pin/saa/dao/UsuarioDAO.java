@@ -36,7 +36,7 @@ public class UsuarioDAO {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
 		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		criteriaQuery.where(criteriaBuilder.like(usuarios.get("nome"), "%"+nome+"%"));
+		criteriaQuery.where(criteriaBuilder.like(usuarios.<String>get("nome"), "%"+nome+"%"));
 		
 		Query query = entityManager.createQuery(criteriaQuery);
 		return query.getResultList();
