@@ -44,12 +44,12 @@
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">
 				<p:commandButton value="Voltar"
-					action="#{listUsuario.preparaListar()}" ajax="false"
+					action="#{listUsuario.preparaListar}" ajax="false"
 					immediate="true" />
-				<p:commandButton value="Atualizar" action="#{atualizaUsuario.atualizar()}"
+				<p:commandButton value="Atualizar" action="#{atualizaUsuario.atualizar}"
 					ajax="false" />
 				<p:commandButton value="Limpar"
-					actionListener="#{atualizaUsuario.limparDados()}" update="@form"
+					actionListener="#{atualizaUsuario.limparDados}" update="@form"
 					type="reset" />
 			</h:panelGrid>
 		</h:form>

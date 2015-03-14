@@ -26,7 +26,7 @@ public class Usuarios {
 	@Column
 	private String senha;
 	
-	@Column
+	@Column(name="primeiro_acesso")
 	private boolean primeiroAcesso;
 	
 	@Column

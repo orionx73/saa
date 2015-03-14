@@ -39,12 +39,12 @@
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">
 				<p:commandButton value="Voltar"
-					action="#{listUsuario.preparaListar()}" ajax="false"
+					action="#{listUsuario.preparaListar}" ajax="false"
 					immediate="true" />
-				<p:commandButton value="Salvar" action="#{cadUsuario.salvar()}"
+				<p:commandButton value="Salvar" action="#{cadUsuario.salvar}"
 					ajax="false" />
 				<p:commandButton value="Limpar"
-					actionListener="#{cadUsuario.limpaDados()}" update="@form"
+					actionListener="#{cadUsuario.limpaDados}" update="@form"
 					type="reset" />
 			</h:panelGrid>
 			</f:validateBean>

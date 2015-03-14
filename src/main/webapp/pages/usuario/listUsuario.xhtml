@@ -18,11 +18,11 @@
 				<p:outputLabel id="nomeLb" value="Nome: " />
 				<p:inputText id="nomeTx" value="#{listUsuario.nome}" />
 				<p:commandButton value="Listar"
-					actionListener="#{listUsuario.lista()}" update="@form" />
+					actionListener="#{listUsuario.lista}" update="@form" />
 			</h:panelGrid>
 			<br />
 			<h:panelGrid columns="1" styleClass="panelgrid">
-				<p:commandButton value="Incluir" action="#{cadUsuario.preparaSalvar()}" ajax="false"/>
+				<p:commandButton value="Incluir" action="#{cadUsuario.preparaSalvar}" ajax="false"/>
 			</h:panelGrid>
 			<br />
 			<p:dataTable id="tbUsuarios" var="usuario"
