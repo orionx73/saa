@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="alunos")
-
 public class Alunos implements Serializable{
 
 
