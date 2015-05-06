@@ -2,7 +2,10 @@ package br.unifor.pin.saa.utils;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
+/**
+ * @author patrick.cunha
+ * 
+ */
 public class MessagesUtils {
 
 	public static void info(String msg) {

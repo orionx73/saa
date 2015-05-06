@@ -1,5 +1,8 @@
 package br.unifor.pin.saa.utils;
-
+/**
+ * @author patrick.cunha
+ * 
+ */
 public class Navigation {
 	
 	public static final String SUCESSO = "sucesso";
