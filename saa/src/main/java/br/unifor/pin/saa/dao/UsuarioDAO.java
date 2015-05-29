@@ -3,7 +3,6 @@ package br.unifor.pin.saa.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,12 +14,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.saa.entity.Usuarios;
-import br.unifor.pin.saa.exceptions.DAOException;
 
-/**
- * @author patrick.cunha
- * 
- */
+
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
 public class UsuarioDAO {
@@ -47,20 +42,17 @@ public class UsuarioDAO {
 		return query.getResultList();
 	}
 	
-	public Usuarios buscaPorId(Integer id) throws DAOException {
+	public Usuarios buscaPorId(Integer id) {
 		String jpql = "select u from Usuarios u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("id", id);
 		
-		try {
-			return (Usuarios) query.getSingleResult();
-		} catch(NoResultException e){
-			return null;
-		} 
-		
+		return (Usuarios) query.getSingleResult();
 	}
 	
 	public void excluir(Usuarios usuario) {
 		entityManager.remove(usuario);
 	}
+
+
 }
