@@ -1,37 +1,40 @@
 package br.unifor.pin.saa.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * @author patrick.cunha
- * 
- */
 @Entity
-@Table(name = "usuarios")
-public class Usuarios {
+@Table(name="usuarios")
+public class Usuarios implements Serializable {
+
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="usuario_seq", sequenceName="usuario_seq", allocationSize=1)
+	@GeneratedValue(generator="usuario_seq", strategy=GenerationType.SEQUENCE)
 	private Integer id;
-
-	@Column
+	
+	@Column(nullable=false)
 	private String nome;
-
-	@Column
+	
+	@Column(nullable=false)
 	private String email;
-
-	@Column
+	
+	@Column(nullable=false)
 	private String senha;
-
-	@Column(name = "primeiro_acesso")
+	
+	@Column(name="primeiro_acesso" ,nullable=false)
 	private boolean primeiroAcesso;
-
-	@Column
+	
+	@Column(nullable=false)
 	private boolean ativo;
 
 	public Integer getId() {
@@ -81,5 +84,9 @@ public class Usuarios {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	
+	
+	
 
 }
