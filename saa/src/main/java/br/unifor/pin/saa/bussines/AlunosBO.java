@@ -9,49 +9,55 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.saa.dao.UsuarioDAO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.dao.AlunosDAO;
+import br.unifor.pin.saa.entity.Alunos;
 
 @Component
-public class UsuarioBO {
-
+public class AlunosBO {
+	
 	private static final Logger logger = LoggerFactory
 			.getLogger(UsuarioBO.class);
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
+	private AlunosDAO alunosDAO;
 
-	public void salvar(Usuarios usuario) {
+	public void salvar(Alunos aluno){
 		loggerInit("salvar");
-		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		alunosDAO.salvar(aluno);
 		loggerFinhish("salvar");
 	}
 	
-	public void atualizar(Usuarios usuario){
+	public void atualizar(Alunos aluno){
 		loggerInit("atualizar");
-		usuarioDAO.atualizar(usuario);
+		alunosDAO.atualizar(aluno);
 		loggerFinhish("atualizar");
-		
-	}
-
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		loggerInit("listaUsuarioPorNome");
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
-		loggerFinhish("listaUsuarioPorNome");
-		return usuarios;
 	}
 	
-	public Usuarios buscarPorId(Integer id){
-		return usuarioDAO.buscaPorId(id);
+	public Alunos buscarPorNome(String nome) {
+		loggerInit("BuscaAlunoPorNome");
+		Alunos aluno = alunosDAO.buscarPorNome(nome);
+		loggerInit("BuscaAlunoPorNome");
+		return aluno;
 	}
+	
+	public Alunos buscarPorId(Long id){
+		return alunosDAO.buscarPorId(id);
+	}
+	
+	public List<Alunos> listaAlunosPorNome(String nome) {
+		loggerInit("listaAlunosPorNome");
+		List<Alunos> alunos = alunosDAO.listarPorNome(nome);
+		loggerFinhish("listaAlunosPorNome");
+		return alunos;
+	}
+	
+
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void excluir(Usuarios usuario) {
+	public void excluir(Alunos aluno) {
 		loggerInit("excluir");
-		usuario = usuarioDAO.buscaPorId(usuario.getId());
-		usuarioDAO.excluir(usuario);
+		aluno = alunosDAO.buscarPorId(aluno.getId());
+		alunosDAO.excluir(aluno);
 		loggerFinhish("excluir");
 	}
 
@@ -64,7 +70,5 @@ public class UsuarioBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
-
 
 }

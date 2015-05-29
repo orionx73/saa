@@ -1,6 +1,5 @@
 package br.unifor.pin.saa.bussines;
 
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,49 +8,48 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.saa.dao.UsuarioDAO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.dao.InstituicoesDAO;
+import br.unifor.pin.saa.entity.Instituicoes;
+
 
 @Component
-public class UsuarioBO {
+public class InstituicoesBO {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(UsuarioBO.class);
+			.getLogger(InstituicoesBO.class);
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
-
-	public void salvar(Usuarios usuario) {
+	private InstituicoesDAO instituicoesDAO;
+	
+	public void salvar(Instituicoes instituicoes) {
 		loggerInit("salvar");
-		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		instituicoesDAO.salvar(instituicoes);
 		loggerFinhish("salvar");
 	}
 	
-	public void atualizar(Usuarios usuario){
+	public void atualizar(Instituicoes instituicoes){
 		loggerInit("atualizar");
-		usuarioDAO.atualizar(usuario);
+		instituicoesDAO.atualizar(instituicoes);
 		loggerFinhish("atualizar");
 		
 	}
-
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		loggerInit("listaUsuarioPorNome");
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
-		loggerFinhish("listaUsuarioPorNome");
-		return usuarios;
+	
+	public Instituicoes buscarPorId(Long id){
+		return instituicoesDAO.buscarPorId(id);
 	}
 	
-	public Usuarios buscarPorId(Integer id){
-		return usuarioDAO.buscaPorId(id);
+	public Instituicoes buscarPorNome(String nome) {
+		loggerInit("BuscaInstituicoesPorNome");
+		Instituicoes instituicoes = instituicoesDAO.buscarPorNome(nome);
+		loggerInit("BuscaAlunoPorNome");
+		return instituicoes;
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void excluir(Usuarios usuario) {
+	public void excluir(Instituicoes instituicoes) {
 		loggerInit("excluir");
-		usuario = usuarioDAO.buscaPorId(usuario.getId());
-		usuarioDAO.excluir(usuario);
+		instituicoes = instituicoesDAO.buscarPorId(instituicoes.getId());
+		instituicoesDAO.excluir(instituicoes);
 		loggerFinhish("excluir");
 	}
 
@@ -64,7 +62,5 @@ public class UsuarioBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
-
 
 }

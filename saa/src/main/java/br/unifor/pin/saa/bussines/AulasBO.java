@@ -9,49 +9,49 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.saa.dao.UsuarioDAO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.dao.AulasDAO;
+import br.unifor.pin.saa.entity.Aulas;
+
 
 @Component
-public class UsuarioBO {
+public class AulasBO {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(UsuarioBO.class);
+			.getLogger(AulasBO.class);
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
+	private AulasDAO aulasDAO;
 
-	public void salvar(Usuarios usuario) {
+	public void salvar(Aulas aula) {
 		loggerInit("salvar");
-		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		aula.setTurma(aula.getTurma());
+		aulasDAO.salvar(aula);
 		loggerFinhish("salvar");
 	}
 	
-	public void atualizar(Usuarios usuario){
+	public void atualizar(Aulas aula){
 		loggerInit("atualizar");
-		usuarioDAO.atualizar(usuario);
+		aulasDAO.atualizar(aula);
 		loggerFinhish("atualizar");
 		
 	}
-
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		loggerInit("listaUsuarioPorNome");
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
-		loggerFinhish("listaUsuarioPorNome");
-		return usuarios;
+	
+	public List<Aulas> listaAulaPorConteudo(String conteudo) {
+		loggerInit("listaAulaPorConteudo");
+		List<Aulas> aulas = aulasDAO.listarPorConteudo(conteudo);
+		loggerFinhish("listaAulaPorConteudo");
+		return aulas;
 	}
 	
-	public Usuarios buscarPorId(Integer id){
-		return usuarioDAO.buscaPorId(id);
+	public Aulas buscarPorId(Long id){
+		return aulasDAO.buscarPorId(id);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void excluir(Usuarios usuario) {
+	public void excluir(Aulas aula) {
 		loggerInit("excluir");
-		usuario = usuarioDAO.buscaPorId(usuario.getId());
-		usuarioDAO.excluir(usuario);
+		aula = aulasDAO.buscarPorId(aula.getId());
+		aulasDAO.excluir(aula);
 		loggerFinhish("excluir");
 	}
 
@@ -64,7 +64,6 @@ public class UsuarioBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
-
+	
 
 }

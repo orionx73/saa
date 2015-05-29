@@ -1,7 +1,5 @@
 package br.unifor.pin.saa.bussines;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,49 +7,40 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.saa.dao.UsuarioDAO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.dao.AvaliacoesDAO;
+import br.unifor.pin.saa.entity.Avaliacoes;
 
 @Component
-public class UsuarioBO {
-
+public class AvaliacoesBO {
+	
 	private static final Logger logger = LoggerFactory
-			.getLogger(UsuarioBO.class);
+			.getLogger(AvaliacoesBO.class);
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
+	private AvaliacoesDAO avaliacoesDAO;
 
-	public void salvar(Usuarios usuario) {
+	public void salvar(Avaliacoes avaliacoes) {
 		loggerInit("salvar");
-		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		avaliacoesDAO.salvar(avaliacoes);
 		loggerFinhish("salvar");
 	}
 	
-	public void atualizar(Usuarios usuario){
+	public void atualizar(Avaliacoes avaliacoes){
 		loggerInit("atualizar");
-		usuarioDAO.atualizar(usuario);
+		avaliacoesDAO.atualizar(avaliacoes);
 		loggerFinhish("atualizar");
 		
 	}
-
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		loggerInit("listaUsuarioPorNome");
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
-		loggerFinhish("listaUsuarioPorNome");
-		return usuarios;
-	}
 	
-	public Usuarios buscarPorId(Integer id){
-		return usuarioDAO.buscaPorId(id);
+	public Avaliacoes buscarPorId(Long id){
+		return avaliacoesDAO.buscarPorId(id);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void excluir(Usuarios usuario) {
+	public void excluir(Avaliacoes avaliacoes) {
 		loggerInit("excluir");
-		usuario = usuarioDAO.buscaPorId(usuario.getId());
-		usuarioDAO.excluir(usuario);
+		avaliacoes = avaliacoesDAO.buscarPorId(avaliacoes.getId());
+		avaliacoesDAO.excluir(avaliacoes);
 		loggerFinhish("excluir");
 	}
 

@@ -9,50 +9,45 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.saa.dao.UsuarioDAO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.dao.TurmaDAO;
+import br.unifor.pin.saa.entity.Turma;
 
 @Component
-public class UsuarioBO {
-
+public class TurmaBO {
+	
 	private static final Logger logger = LoggerFactory
-			.getLogger(UsuarioBO.class);
+			.getLogger(TurmaBO.class);
 
 	@Autowired
-	private UsuarioDAO usuarioDAO;
-
-	public void salvar(Usuarios usuario) {
+	private TurmaDAO turmaDAO;
+	
+	public void salvar(Turma turma) {
 		loggerInit("salvar");
-		usuario.setAtivo(false);
-		usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		turmaDAO.salvar(turma);
 		loggerFinhish("salvar");
 	}
 	
-	public void atualizar(Usuarios usuario){
+	public void atualizar(Turma turma){
 		loggerInit("atualizar");
-		usuarioDAO.atualizar(usuario);
+		turmaDAO.atualizar(turma);
 		loggerFinhish("atualizar");
 		
 	}
-
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
-		loggerInit("listaUsuarioPorNome");
-		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
-		loggerFinhish("listaUsuarioPorNome");
-		return usuarios;
-	}
 	
-	public Usuarios buscarPorId(Integer id){
-		return usuarioDAO.buscaPorId(id);
+	public Turma buscarPorId(Long id){
+		return turmaDAO.buscarPorId(id);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void excluir(Usuarios usuario) {
+	public void excluir(Turma turma) {
 		loggerInit("excluir");
-		usuario = usuarioDAO.buscaPorId(usuario.getId());
-		usuarioDAO.excluir(usuario);
+		turma = turmaDAO.buscarPorId(turma.getId());
+		turmaDAO.excluir(turma);
 		loggerFinhish("excluir");
+	}
+	
+	public List<Turma> buscarTodos(){
+		return turmaDAO.listarTodas();
 	}
 
 	public void loggerInit(String method) {
@@ -64,7 +59,6 @@ public class UsuarioBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
 
 
 }
