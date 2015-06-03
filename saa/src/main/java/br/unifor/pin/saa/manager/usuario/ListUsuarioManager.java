@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager;
+package br.unifor.pin.saa.manager.usuario;
 
 import java.util.List;
 
