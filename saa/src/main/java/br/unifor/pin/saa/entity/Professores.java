@@ -25,9 +25,9 @@ public class Professores implements Serializable {
 	private String nome;
 	
 	@Column(nullable=false)
-	private Integer matricula;
+	private String matricula;
 	
-	@Column(nullable=false)
+	@Column
 	private String cpf;
 
 	// Getts and Setts	
@@ -48,11 +48,11 @@ public class Professores implements Serializable {
 		this.nome = nome;
 	}
 
-	public Integer getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 

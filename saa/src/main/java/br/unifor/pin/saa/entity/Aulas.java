@@ -27,10 +27,10 @@ public class Aulas implements Serializable{
 	@JoinColumn(name="turma_id")
 	private Turma turma;
 	
-	@Column(nullable=false)
+	@Column
 	private String conteudo;
 	
-	@Column(nullable=false)
+	@Column
 	private String descricao;
 
 
