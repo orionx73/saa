@@ -47,6 +47,49 @@
 	</navigation-rule>
 	<!-- Usuarios Fim -->
 
+<!-- Alunos Inicio -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/aluno/cadAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/aluno/listAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/aluno/cadAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/aluno/listAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>atualiza</from-outcome>
+			<to-view-id>/pages/aluno/atualizaAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/aluno/cadAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/aluno/listAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/aluno/atualizaAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/aluno/listAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Alunos Fim -->
+
+
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 		<locale-config>

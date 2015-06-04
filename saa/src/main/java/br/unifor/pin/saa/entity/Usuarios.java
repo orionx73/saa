@@ -31,7 +31,7 @@ public class Usuarios implements Serializable {
 	@Column(nullable=false)
 	private String senha;
 	
-	@Column(name="primeiro_acesso" ,nullable=false)
+	@Column(nullable=false)
 	private boolean primeiroAcesso;
 	
 	@Column(nullable=false)

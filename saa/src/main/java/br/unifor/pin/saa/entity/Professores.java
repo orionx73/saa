@@ -27,6 +27,9 @@ public class Professores implements Serializable {
 	@Column(nullable=false)
 	private String matricula;
 	
+	@Column(nullable=false)
+	private String email;
+	
 	@Column
 	private String cpf;
 
@@ -62,6 +65,14 @@ public class Professores implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

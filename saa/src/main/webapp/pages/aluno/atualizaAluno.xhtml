@@ -17,22 +17,24 @@
 					requiredMessage="Campo Obrigatório" />
 				<p:message for="nome" />
 
+				<p:outputLabel value="Cpf: " />
+				<font color="red">*</font>
+				<p:inputText id="cpf" value="#{atualizaAluno.alunoSelecionado.cpf}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="cpf" />
+				
 				<p:outputLabel value="Email: " />
 				<font color="red">*</font>
 				<p:inputText id="email" value="#{atualizaAluno.alunoSelecionado.email}" required="true"
 					requiredMessage="Campo Obrigatório" />
 				<p:message for="email" />
 				
-				<p:outputLabel value="Cpf: " />
-				<font color="red">*</font>
-				<p:selectBooleanButton id="ativo" value="#{atualizaAluno.alunoSelecionado.cpf}" onLabel="Sim" offLabel="Não" style="width:60px" />
-				<p:message for="cpf" />
-				
 				<p:outputLabel value="Matricula: " />
 				<font color="red">*</font>
-				<p:selectBooleanButton id="primeiro" value="#{atualizaAluno.alunoSelecionado.matricula}" onLabel="Sim" offLabel="Não" style="width:60px" />
+				<p:inputText id="matricula" value="#{atualizaAluno.alunoSelecionado.matricula}" required="true"
+					requiredMessage="Campo Obrigatório" />
 				<p:message for="matricula" />
-				
+
 			</h:panelGrid>
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">

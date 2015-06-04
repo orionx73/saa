@@ -27,6 +27,8 @@ public class CadUsuarioManager {
 	private String email;
 	private String senha;
 	
+	
+
 	public String salvar(){
 		Usuarios usuario = new Usuarios();
 		usuario.setNome(nome);
@@ -71,5 +73,5 @@ public class CadUsuarioManager {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+		
 }
