@@ -29,6 +29,9 @@ public class Avaliacoes implements Serializable{
 	@Column(nullable=false)
 	private Boolean aprovado;
 	
+	@Column(nullable=false)
+	private String comentario;
+	
 	//Getts and Setts
 	
 	
@@ -78,6 +81,14 @@ public class Avaliacoes implements Serializable{
 
 	public void setAulas(Aulas aulas) {
 		this.aulas = aulas;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 	

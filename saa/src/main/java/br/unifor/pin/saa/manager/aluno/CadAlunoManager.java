@@ -27,8 +27,7 @@ public class CadAlunoManager {
 	private String email;
 	private String cpf;
 	private String matricula;
-	
-	
+
 
 	public String salvar(){
 		Alunos aluno = new Alunos();
@@ -84,8 +83,5 @@ public class CadAlunoManager {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	
-		
+	}		
 }
