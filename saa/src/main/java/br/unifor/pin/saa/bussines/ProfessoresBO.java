@@ -37,7 +37,7 @@ public class ProfessoresBO {
 		return professoresDAO.buscarPorId(id);
 	}
 	
-	public List<Professores> listaProfessorPorNome(String nome) {
+	public List<Professores> listarProfessorPorNome(String nome) {
 		loggerInit("listaAlunosPorNome");
 		List<Professores> professor = professoresDAO.listarProfessorPorNome(nome);
 		loggerFinhish("listaAlunosPorNome");
