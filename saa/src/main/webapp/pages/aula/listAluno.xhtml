@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListAluno">
+			<h2>Listagem de Alunos</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<p:outputLabel id="nomeLb" value="Nome: " />
+				<p:inputText id="nomeTx" value="#{listAluno.nome}" />
+				<p:commandButton value="Listar"
+					actionListener="#{listAluno.lista}" update="@form" />
+			</h:panelGrid>
+			<br />
+			<h:panelGrid columns="1" styleClass="panelgrid">
+				<p:commandButton value="Incluir" action="#{cadAluno.preparaSalvar}" ajax="false"/>
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbAlunos" var="aluno"
+				value="#{listAluno.alunos}"
+				rendered="#{listAluno.alunos != null}"
+				emptyMessage="Nenhum resultado encontrado."
+				resizableColumns="true">
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+				<p:column headerText="Matricula">
+					<h:outputText value="#{aluno.matricula}" />
+				</p:column>
+				<p:column headerText="Cpf" style="text-align: center">
+					<h:outputText value="#{aluno.cpf}" />
+				</p:column>
+				<p:column style="width: 55px; text-align: center" resizable="false"
+					headerText="Atualizar">
+					<p:commandButton icon="ui-icon-pencil" ajax="false"
+						title="Atualizar"
+						action="#{atualizaAluno.preparaAtualizar(aluno)}" />
+				</p:column>
+				<p:column id="clExcluir" style="width: 43px; text-align: center" resizable="false"
+					headerText="Excluir">
+					<p:commandButton id="btExcluir" icon="ui-icon-closethick"
+						title="Excluir" actionListener="#{listAluno.excluir(aluno)}"
+						update="tbAlunos"
+						onclick="if (!confirm('Confirma exclusão do aluno?')) return false" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
