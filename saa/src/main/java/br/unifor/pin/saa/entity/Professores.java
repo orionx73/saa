@@ -27,11 +27,12 @@ public class Professores implements Serializable {
 	@Column(nullable=false)
 	private String matricula;
 	
+	@Column
+	private String cpf;
+	
 	@Column(nullable=false)
 	private String email;
 	
-	@Column
-	private String cpf;
 
 	// Getts and Setts	
 	
