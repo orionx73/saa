@@ -1,4 +1,4 @@
-/*package br.unifor.pin.saa.manager.professor;
+package br.unifor.pin.saa.manager.professor;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -10,10 +10,7 @@ import br.unifor.pin.saa.bussines.ProfessoresBO;
 import br.unifor.pin.saa.entity.Professores;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-*//**
- * @author rafael.mendes
- * 
- *//*
+
 @RequestScoped
 @ManagedBean(name = "atualizaProfessor")
 @Component(value = "atualizaProfessor")
@@ -52,4 +49,3 @@ public class AtualizaProfessorManager {
 		ProfessorSelecionado = professorSelecionado;
 	}	
 }
-*/

@@ -1,4 +1,4 @@
-/*package br.unifor.pin.saa.manager.professor;
+package br.unifor.pin.saa.manager.professor;
 
 import java.util.List;
 
@@ -12,10 +12,6 @@ import br.unifor.pin.saa.bussines.ProfessoresBO;
 import br.unifor.pin.saa.entity.Professores;
 import br.unifor.pin.saa.utils.Navigation;
 
-*//**
- * @author rafael.mendes
- * 
- *//*
 @RequestScoped
 @ManagedBean(name="listProfessor")
 @Component(value="listProfessor")
@@ -101,7 +97,5 @@ public class ListProfessorManager {
 	public void setProfessores(List<Professores> professores) {
 		this.professores = professores;
 	}
-	
 
 }
-*/
