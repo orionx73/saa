@@ -7,7 +7,7 @@
 	<ui:define name="content">
 
 		<h:form id="formListAluno">
-			<h2>Listagem de Instituições</h2>
+			<h2>Cadastro de Instituições</h2>
 			<p:separator />
 			<br />
 			<h:panelGrid>
@@ -22,26 +22,26 @@
 			</h:panelGrid>
 			<br />
 			<h:panelGrid columns="1" styleClass="panelgrid">
-				<p:commandButton value="Incluir" action="#{cadInstituicao.preparaSalvar}" ajax="false"/>
+				<p:commandButton value="Incluir"
+					action="#{cadInstituicao.preparaSalvar}" ajax="false" />
 			</h:panelGrid>
 			<br />
 			<p:dataTable id="tbInstituicoes" var="instituicao"
 				value="#{listInstituicao.instituicoes}"
 				rendered="#{listInstituicao.instituicoes != null}"
-				emptyMessage="Nenhum resultado encontrado."
-				resizableColumns="true">
+				emptyMessage="Nenhum resultado encontrado." resizableColumns="true">
 
 				<p:column headerText="Nome">
 					<h:outputText value="#{instituicao.nome}" />
 				</p:column>
-					<p:column headerText="Sigla">
-					<h:outputText value="#{isntituicao.sigla}" />
-				</p:column>
-				<p:column headerText="Endereço">
+				<p:column headerText="Endereco">
 					<h:outputText value="#{instituicao.endereco}" />
 				</p:column>
 				<p:column headerText="Telefone" style="text-align: center">
-					<h:outputText value="#{isntituicao.telefone}" />
+					<h:outputText value="#{instituicao.telefone}" />
+				</p:column>
+				<p:column headerText="Sigla" style="text-align: center">
+					<h:outputText value="#{instituicao.sigla}" />
 				</p:column>
 				<p:column style="width: 55px; text-align: center" resizable="false"
 					headerText="Atualizar">
@@ -49,12 +49,12 @@
 						title="Atualizar"
 						action="#{atualizaInstituicao.preparaAtualizar(instituicao)}" />
 				</p:column>
-				<p:column id="clExcluir" style="width: 43px; text-align: center" resizable="false"
-					headerText="Excluir">
+				<p:column id="clExcluir" style="width: 43px; text-align: center"
+					resizable="false" headerText="Excluir">
 					<p:commandButton id="btExcluir" icon="ui-icon-closethick"
-						title="Excluir" actionListener="#{listInstituicao.excluir(instituicoao)}"
+						title="Excluir" actionListener="#{listInstituicao.excluir(instituicao)}"
 						update="tbInstituicoes"
-						onclick="if (!confirm('Confirma exclusão da instituição?')) return false" />
+						onclick="if (!confirm('Confirma exclusão do aluno?')) return false" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

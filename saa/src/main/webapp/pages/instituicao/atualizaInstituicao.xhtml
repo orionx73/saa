@@ -13,36 +13,39 @@
 			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
 				<p:outputLabel value="Nome: " />
 				<font color="red">*</font>
-				<p:inputText id="nome" value="#{atualizaInstituicao.instituicaoSelecionada.nome}" required="true"
-					requiredMessage="Campo Obrigatório" />
+				<p:inputText id="nome"
+					value="#{atualizaInstituicao.instituicaoSelecionada.nome}"
+					required="true" requiredMessage="Campo Obrigatório" />
 				<p:message for="nome" />
+
+				<p:outputLabel value="Endereço: " />
+				<font color="red">*</font>
+				<p:inputText id="endereco"
+					value="#{atualizaInstituicao.instituicaoSelecionada.endereco}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="endereco" />
+
+				<p:outputLabel value="Telefone: " />
+				<font color="red">*</font>
+				<p:inputText id="telefone"
+					value="#{atualizaInstituicao.instituicaoSelecionada.telefone}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="telefone" />
 
 				<p:outputLabel value="Sigla: " />
 				<font color="red">*</font>
-				<p:inputText id="cpf" value="#{atualizaInstituicao.instituicaoSelecionada.sigla}" required="true"
-					requiredMessage="Campo Obrigatório" />
+				<p:inputText id="sigla"
+					value="#{atualizaInstituicao.instituicaoSelecionada.sigla}"
+					required="true" requiredMessage="Campo Obrigatório" />
 				<p:message for="sigla" />
-				
-				<p:outputLabel value="Endereço: " />
-				<font color="red">*</font>
-				<p:inputText id="endereco" value="#{atualizaInstituicao.instituicaoSelecionada.endereco}" required="true"
-					requiredMessage="Campo Obrigatório" />
-				<p:message for="endereco" />
-				
-				<p:outputLabel value="Telefone: " />
-				<font color="red">*</font>
-				<p:inputText id="telefone" value="#{atualizaInstituicao.instituicaoSelecionada.telefone}" required="true"
-					requiredMessage="Campo Obrigatório" />
-				<p:message for="telefone" />
 
 			</h:panelGrid>
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">
-				<p:commandButton value="Voltar"
-					action="#{listInstituicao.preparaListar}" ajax="false"
-					immediate="true" />
-				<p:commandButton value="Atualizar" action="#{atualizaInstituicao.atualizar}"
-					ajax="false" />
+				<p:commandButton value="Voltar" action="#{listInstituicao.preparaListar}"
+					ajax="false" immediate="true" />
+				<p:commandButton value="Atualizar"
+					action="#{atualizaInstituicao.atualizar}" ajax="false" />
 				<p:commandButton value="Limpar"
 					actionListener="#{atualizaInstituicao.limparDados}" update="@form"
 					type="reset" />
