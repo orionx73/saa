@@ -2,7 +2,6 @@ package br.unifor.pin.saa.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 public class Aulas implements Serializable{
 	
 	private static final long serialVersionUID = 2229990954383542838L;
-
+	
 	@Id
 	@SequenceGenerator(name="aulas_seq",sequenceName="aulas_seq",allocationSize=1)
     @GeneratedValue(generator="aulas_seq",strategy=GenerationType.SEQUENCE)
@@ -26,17 +25,27 @@ public class Aulas implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="turma_id")
 	private Turma turma;
-	
-	@Column
+	private String descricao;
 	private String conteudo;
 	
-	@Column
-	private String descricao;
-
-
-	// Getts and Setts
 	
-	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -53,22 +62,30 @@ public class Aulas implements Serializable{
 		this.turma = turma;
 	}
 
-	public String getConteudo() {
-		return conteudo;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
+		return result;
 	}
 
-	public void setConteudo(String conteudo) {
-		this.conteudo = conteudo;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aulas other = (Aulas) obj;
+		if (turma == null) {
+			if (other.turma != null)
+				return false;
+		} else if (!turma.equals(other.turma))
+			return false;
+		return true;
 	}
+	
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
-	
-	
 }

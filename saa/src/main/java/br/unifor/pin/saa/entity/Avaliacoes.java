@@ -23,17 +23,15 @@ public class Avaliacoes implements Serializable{
     @GeneratedValue(generator="avaliacoes_seq",strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
+	
+	@Column(nullable=false)
+	private String comentario;
+	
 	@Column(nullable=false)
 	private Double nota;
 	
 	@Column(nullable=false)
 	private Boolean aprovado;
-	
-	@Column(nullable=false)
-	private String comentario;
-	
-	//Getts and Setts
-	
 	
 	@ManyToOne
 	@JoinColumn(name="aluno_id")
@@ -43,6 +41,7 @@ public class Avaliacoes implements Serializable{
 	@JoinColumn(name="aulas_id")
 	private Aulas aulas;
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -59,13 +58,7 @@ public class Avaliacoes implements Serializable{
 		this.nota = nota;
 	}
 
-	public Boolean getAprovado() {
-		return aprovado;
-	}
 
-	public void setAprovado(Boolean aprovado) {
-		this.aprovado = aprovado;
-	}
 
 	public Alunos getAluno() {
 		return aluno;
@@ -91,5 +84,12 @@ public class Avaliacoes implements Serializable{
 		this.comentario = comentario;
 	}
 
-	
+	public Boolean getAprovado() {
+		return aprovado;
 	}
+
+	public void setAprovado(Boolean aprovado) {
+		this.aprovado = aprovado;
+	}
+
+}

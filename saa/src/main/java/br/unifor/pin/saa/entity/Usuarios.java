@@ -1,9 +1,9 @@
 package br.unifor.pin.saa.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,35 +12,34 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
-public class Usuarios implements Serializable {
-
-	
-	private static final long serialVersionUID = 1L;
+public class Usuarios {
 
 	@Id
 	@SequenceGenerator(name="usuario_seq", sequenceName="usuario_seq", allocationSize=1)
 	@GeneratedValue(generator="usuario_seq", strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	
-	@Column(nullable=false)
+	@Column
 	private String nome;
 	
-	@Column(nullable=false)
+	@Column
 	private String email;
 	
-	@Column(nullable=false)
+	@Column
 	private String senha;
 	
-	@Column(nullable=false)
+	@Column(name="primeiro_acesso")
 	private boolean primeiroAcesso;
 	
-	@Column(nullable=false)
+	@Column
 	private boolean ativo;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private TPUsuario tipoUsuario;
 
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -48,7 +47,6 @@ public class Usuarios implements Serializable {
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -56,7 +54,6 @@ public class Usuarios implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -64,7 +61,6 @@ public class Usuarios implements Serializable {
 	public String getSenha() {
 		return senha;
 	}
-
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
@@ -72,7 +68,6 @@ public class Usuarios implements Serializable {
 	public boolean isPrimeiroAcesso() {
 		return primeiroAcesso;
 	}
-
 	public void setPrimeiroAcesso(boolean primeiroAcesso) {
 		this.primeiroAcesso = primeiroAcesso;
 	}
@@ -80,13 +75,15 @@ public class Usuarios implements Serializable {
 	public boolean isAtivo() {
 		return ativo;
 	}
-
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	public TPUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTPUsuario(TPUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 	
 	
-	
-	
-
 }

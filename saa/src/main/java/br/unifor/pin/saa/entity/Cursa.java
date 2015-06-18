@@ -31,8 +31,6 @@ public class Cursa implements Serializable{
 	private Turma turma;
 
 	
-	// Getts and Setts
-	
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +54,5 @@ public class Cursa implements Serializable{
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
-	
 	
 }

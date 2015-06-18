@@ -1,6 +1,5 @@
 package br.unifor.pin.saa.entity;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -30,13 +29,6 @@ public class Alunos implements Serializable{
 	
 	@Column(nullable=false)
 	private String matricula;
-
-	@Column
-	private String  email;
-
-	
-	// Getts and Setts
-		
 	
 	
 	public Long getId() {
@@ -69,13 +61,5 @@ public class Alunos implements Serializable{
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 }
