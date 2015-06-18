@@ -12,32 +12,24 @@ import br.unifor.pin.saa.bussines.AlunosBO;
 import br.unifor.pin.saa.entity.Alunos;
 import br.unifor.pin.saa.utils.Navigation;
 
-/**
- * @author Alex.torres
- * 
- */
 @RequestScoped
 @ManagedBean(name="listAluno")
 @Component(value="listAluno")
 public class ListAlunoManager {
 
 	@Autowired
-	private AlunosBO alunoBO;
+	private AlunosBO alunosBO;
 	private String nome;
-	private String email;
-	private String cpf;
-	private String matricula;
 	private List<Alunos> alunos;
 	
 	public void lista(){
 		
-		alunos = alunoBO.listaAlunosPorNome(nome);
-		
+		alunos = alunosBO.listaAlunosPorNome(nome);
 	}
 	
 	public void excluir(Alunos aluno){
-		alunoBO.excluir(aluno);
-		alunos = alunoBO.listaAlunosPorNome(nome);
+		alunosBO.excluir(aluno);
+		alunos = alunosBO.listaAlunosPorNome(nome);
 	}
 	
 	public String preparaAtualizar(Alunos aluno){
@@ -52,9 +44,6 @@ public class ListAlunoManager {
 	
 	public void limparDados(){
 		this.nome = "";
-		this.email="";
-		this.matricula="";
-		this.cpf ="";
 		this.alunos = null;
 	}
 	
@@ -62,14 +51,7 @@ public class ListAlunoManager {
 	public String salvar(){
 		return null;
 	}
-	
-	public List<Alunos> getAlunos() {
-		return alunos;
-	}
-	public void setAlunos(List<Alunos> alunos) {
-		this.alunos = alunos;
-	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -77,27 +59,11 @@ public class ListAlunoManager {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public List<Alunos> getAlunos() {
+		return alunos;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+	public void setAlunos(List<Alunos> alunos) {
+		this.alunos = alunos;
 	}
 }

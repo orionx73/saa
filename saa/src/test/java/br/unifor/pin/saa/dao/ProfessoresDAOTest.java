@@ -24,11 +24,11 @@ public class ProfessoresDAOTest {
 	@Test
 	public void testSalvar() {
 		final String nome = "Patrick";
-		final String matricula ="1413537.2/5";
+		
 				
 		Professores professor = new Professores();
 		professor.setNome(nome);
-		professor.setMatricula(matricula);
+		
 		
 		professoresDAO.salvar(professor);
 		
@@ -42,11 +42,11 @@ public class ProfessoresDAOTest {
 	public void testAtualizar() {
 		final String nome = "Patrick";
 		final String nomeAlterado = "Professor PATRICK";
-		final String matricula ="1413537.2/5";
+		
 		
 		Professores professor = new Professores();
 		professor.setNome(nome);
-		professor.setMatricula(matricula);
+		
 		
 		professoresDAO.salvar(professor);
 		professor.setNome(nomeAlterado);
@@ -61,11 +61,11 @@ public class ProfessoresDAOTest {
 	@Test
 	public void testBuscarPorId() {
 		final String nome = "Patrick";
-		final String matricula ="1413537.2/5";
+	
 				
 		Professores professor = new Professores();
 		professor.setNome(nome);
-		professor.setMatricula(matricula);
+		
 		
 		professoresDAO.salvar(professor);
 							
@@ -81,11 +81,11 @@ public class ProfessoresDAOTest {
 	@Test
 	public void testBuscarPorNome() {
 		final String nome = "Patrick";
-		final String matricula ="1413537.2/5";
+		
 				
 		Professores professor = new Professores();
 		professor.setNome(nome);
-		professor.setMatricula(matricula);
+	
 		
 		professoresDAO.salvar(professor);
 							

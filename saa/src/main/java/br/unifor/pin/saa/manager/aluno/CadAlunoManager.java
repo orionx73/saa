@@ -10,32 +10,29 @@ import br.unifor.pin.saa.bussines.AlunosBO;
 import br.unifor.pin.saa.entity.Alunos;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author Alex.torres
- * 
- */
+
 @RequestScoped
 @ManagedBean(name="cadAluno")
 @Component(value="cadAluno")
 public class CadAlunoManager {
 
 	@Autowired
-	private AlunosBO alunoBO;
+	private AlunosBO alunosBO;
+	
 	@Autowired
 	private ListAlunoManager listAluno;
-	private String nome;
-	private String email;
-	private String cpf;
+	
 	private String matricula;
-
-
+	private String nome;
+	private String cpf;
+	private Alunos alunos;
+	
 	public String salvar(){
-		Alunos aluno = new Alunos();
-		aluno.setNome(nome);
-		aluno.setEmail(email);
-		aluno.setMatricula(matricula);
-		aluno.setCpf(cpf);
-		alunoBO.salvar(aluno);
+		Alunos alunos = new Alunos();
+		alunos.setMatricula(matricula);
+		alunos.setCpf(cpf);
+		alunos.setNome(nome);
+		alunosBO.salvar(alunos);
 		MessagesUtils.info("Aluno salvo com sucesso!");
 		listAluno.lista();
 		
@@ -49,24 +46,25 @@ public class CadAlunoManager {
 	}
 			
 	public void limpaDados(){
-		this.nome = "";
-		this.email = "";
-		this.cpf = "";
 		this.matricula = "";
+		this.nome = "";
+		this.cpf = "";
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getCpf() {
@@ -77,11 +75,12 @@ public class CadAlunoManager {
 		this.cpf = cpf;
 	}
 
-	public String getMatricula() {
-		return matricula;
+	public Alunos getAluno() {
+		return alunos;
 	}
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}		
+	public void setAluno(Alunos alunos) {
+		this.alunos = alunos;
+	}
+	
 }

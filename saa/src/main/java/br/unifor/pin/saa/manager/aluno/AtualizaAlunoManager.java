@@ -7,50 +7,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.saa.bussines.AlunosBO;
-
 import br.unifor.pin.saa.entity.Alunos;
-
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author Alex.torres
- * 
- */
+
 @RequestScoped
 @ManagedBean(name = "atualizaAluno")
 @Component(value = "atualizaAluno")
 public class AtualizaAlunoManager {
 
 	@Autowired
-	private AlunosBO alunoBO;
-	private Alunos AlunoSelecionado;
+	private AlunosBO alunosBO;
+	private Alunos alunoSelecionado;
 
 	public String atualizar() {
-		alunoBO.atualizar(AlunoSelecionado);
+		alunosBO.atualizar(alunoSelecionado);
 		MessagesUtils.info("Aluno atualizado com sucesso!");
 
 		return Navigation.SUCESSO;
 	}
 
 	public String preparaAtualizar(Alunos aluno) {
-		AlunoSelecionado = alunoBO.buscarPorId(aluno.getId());
+		alunoSelecionado = alunosBO.buscarPorId(aluno.getId());
 
 		return Navigation.ATUALIZA;
 	}
 	
 	public void limparDados(){
-		AlunoSelecionado.setNome("");
-		AlunoSelecionado.setEmail("");
-		AlunoSelecionado.setCpf("");
-		AlunoSelecionado.setMatricula("");
-		
+		alunoSelecionado.setNome("");
+		alunoSelecionado.setCpf("");
+		alunoSelecionado.setMatricula("");
 	}
 
 	public Alunos getAlunoSelecionado() {
-		return AlunoSelecionado;
+		return alunoSelecionado;
 	}
 	public void setAlunoSelecionado(Alunos alunoSelecionado) {
-		this.AlunoSelecionado = alunoSelecionado;
+		this.alunoSelecionado = alunoSelecionado;
 	}
 	
 }

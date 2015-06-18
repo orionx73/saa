@@ -10,10 +10,7 @@ import br.unifor.pin.saa.bussines.UsuarioBO;
 import br.unifor.pin.saa.entity.Usuarios;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author patrick.cunha
- * 
- */
+
 @RequestScoped
 @ManagedBean(name = "atualizaUsuario")
 @Component(value = "atualizaUsuario")

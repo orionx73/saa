@@ -8,37 +8,35 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.saa.bussines.InstituicoesBO;
 import br.unifor.pin.saa.entity.Instituicoes;
-import br.unifor.pin.saa.manager.aluno.ListAlunoManager;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author rafael.mendes
- * 
- */
+
 @RequestScoped
 @ManagedBean(name="cadInstituicao")
 @Component(value="cadInstituicao")
 public class CadInstituicaoManager {
 
 	@Autowired
-	private InstituicoesBO instituicaoBO;
+	private InstituicoesBO instituicoesBO;
+	
 	@Autowired
-	private ListAlunoManager listAluno;
+	private ListInstituicaoManager listInstituicao;
+	
 	private String nome;
 	private String endereco;
-	private String sigla;
 	private String telefone;
-		
-
+	private String sigla;
+	
 	public String salvar(){
-		Instituicoes instituicao = new Instituicoes();
-		instituicao.setNome(nome);
-		instituicao.setSigla(sigla);
-		instituicao.setEndereco(endereco);
-		instituicao.setTelefone(telefone);
-		instituicaoBO.salvar(instituicao);
+		Instituicoes instituicoes = new Instituicoes();
+		instituicoes.setNome(nome);
+		instituicoes.setEndereco(endereco);
+		instituicoes.setTelefone(telefone);
+		instituicoes.setSigla(sigla);
+		instituicoesBO.salvar(instituicoes);
+	
 		MessagesUtils.info("Instituição salva com sucesso!");
-		listAluno.lista();
+		listInstituicao.lista();
 		
 		return Navigation.SUCESSO;
 	}
@@ -52,13 +50,14 @@ public class CadInstituicaoManager {
 	public void limpaDados(){
 		this.nome = "";
 		this.endereco = "";
-		this.sigla = "";
 		this.telefone = "";
+		this.sigla = "";
 	}
 
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -71,20 +70,20 @@ public class CadInstituicaoManager {
 		this.endereco = endereco;
 	}
 
-	public String getSigla() {
-		return sigla;
-	}
-
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 	
 }

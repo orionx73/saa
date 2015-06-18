@@ -10,43 +10,41 @@ import br.unifor.pin.saa.bussines.InstituicoesBO;
 import br.unifor.pin.saa.entity.Instituicoes;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author rafael.mendes
- * 
- */
+
 @RequestScoped
 @ManagedBean(name = "atualizaInstituicao")
 @Component(value = "atualizaInstituicao")
 public class AtualizaInstituicaoManager {
+
 	@Autowired
-	private InstituicoesBO instituicaoBO;
-	private Instituicoes InstituicaoSelecionada;
+	private InstituicoesBO instituicoesBO;
+	private Instituicoes instituicaoSelecionada;
 
 	public String atualizar() {
-		instituicaoBO.atualizar(InstituicaoSelecionada);
+		instituicoesBO.atualizar(instituicaoSelecionada);
 		MessagesUtils.info("Instituição atualizada com sucesso!");
 
 		return Navigation.SUCESSO;
 	}
 
 	public String preparaAtualizar(Instituicoes instituicao) {
-		InstituicaoSelecionada = instituicaoBO.buscarPorId(instituicao.getId());
+		instituicaoSelecionada = instituicoesBO.buscarPorId(instituicao.getId());
 
 		return Navigation.ATUALIZA;
 	}
 	
 	public void limparDados(){
-		InstituicaoSelecionada.setNome("");
-		InstituicaoSelecionada.setSigla("");
-		InstituicaoSelecionada.setEndereco("");
-		InstituicaoSelecionada.setTelefone("");
-		
+		instituicaoSelecionada.setNome("");
+		instituicaoSelecionada.setEndereco("");
+		instituicaoSelecionada.setTelefone("");
+		instituicaoSelecionada.setSigla("");
 	}
 
-	public Instituicoes geInstituicaoSelecionada() {
-		return InstituicaoSelecionada;
+	public Instituicoes getInstituicaoSelecionada() {
+		return instituicaoSelecionada;
 	}
-	public void setInstituicaoSelecionada(Instituicoes instituicoesSelecionada) {
-		this.InstituicaoSelecionada = instituicoesSelecionada;
+	public void setInstituicaoSelecionada(Instituicoes instituicaoSelecionada) {
+		this.instituicaoSelecionada = instituicaoSelecionada;
 	}
+	
 }
