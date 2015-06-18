@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.saa.dao.InstituicoesDAO;
+
 import br.unifor.pin.saa.entity.Instituicoes;
+
 
 
 @Component
@@ -36,22 +38,25 @@ public class InstituicoesBO {
 		
 	}
 	
-	public Instituicoes buscarPorId(Long id){
-		return instituicoesDAO.buscarPorId(id);
+	public List<Instituicoes> buscarTodos(){
+		return instituicoesDAO.buscarTodos();
 	}
 	
-
-	public List<Instituicoes> listaInstituicoesPorNome(String nome) {
-		loggerInit("listaInstituicoesPorNome");
-		List<Instituicoes> instituicoes = instituicoesDAO.listarPorNome(nome);
-		loggerFinhish("listaInstituicoesPorNome");
-		return instituicoes;
+	public Instituicoes buscarPorId(Long id){
+		return instituicoesDAO.buscarPorId(id);
 	}
 	
 	public Instituicoes buscarPorNome(String nome) {
 		loggerInit("BuscaInstituicoesPorNome");
 		Instituicoes instituicoes = instituicoesDAO.buscarPorNome(nome);
 		loggerInit("BuscaAlunoPorNome");
+		return instituicoes;
+	}
+	
+	public List<Instituicoes> listaInstituicoesPorNome(String nome) {
+		loggerInit("listaInstituicoesPorNome");
+		List<Instituicoes> instituicoes = instituicoesDAO.listarPorNome(nome);
+		loggerFinhish("listaInstituicoesPorNome");
 		return instituicoes;
 	}
 	
@@ -72,5 +77,8 @@ public class InstituicoesBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
+	
+	
+	
+	
 }

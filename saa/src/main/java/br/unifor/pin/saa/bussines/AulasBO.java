@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.saa.dao.AulasDAO;
 import br.unifor.pin.saa.entity.Aulas;
 
-
 @Component
 public class AulasBO {
 
@@ -47,6 +46,10 @@ public class AulasBO {
 		return aulasDAO.buscarPorId(id);
 	}
 	
+	public List<Aulas> buscarTodos(){
+		return aulasDAO.buscarTodos();
+	}
+	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void excluir(Aulas aula) {
 		loggerInit("excluir");
@@ -65,5 +68,4 @@ public class AulasBO {
 				+ this.getClass().getName());
 	}
 	
-
 }

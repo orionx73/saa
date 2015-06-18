@@ -1,5 +1,7 @@
 package br.unifor.pin.saa.bussines;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,13 @@ public class AvaliacoesBO {
 		avaliacoesDAO.excluir(avaliacoes);
 		loggerFinhish("excluir");
 	}
+	
+	public List<Avaliacoes> listaAvaliacaoPorComentario(String comentario) {
+		loggerInit("listaAvaliacoesPorComentario");
+		List<Avaliacoes> avaliacoes = avaliacoesDAO.listarPorComentario(comentario);
+		loggerFinhish("listaAvaliacoesPorComentario");
+		return avaliacoes;
+	}
 
 	public void loggerInit(String method) {
 		logger.debug("Inicio do método " + method + " da classe"
@@ -53,7 +62,5 @@ public class AvaliacoesBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
-
 
 }

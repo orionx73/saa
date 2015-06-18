@@ -44,19 +44,21 @@ public class AlunosBO {
 		return alunosDAO.buscarPorId(id);
 	}
 	
+	public List<Alunos> listaAlunosPorNome(String nome) {
+		loggerInit("listaAlunosPorNome");
+		List<Alunos> alunos = alunosDAO.listarPorNome(nome);
+		loggerFinhish("listaAlunosPorNome");
+		return alunos;
+	}
+	
+
+	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void excluir(Alunos aluno) {
 		loggerInit("excluir");
 		aluno = alunosDAO.buscarPorId(aluno.getId());
 		alunosDAO.excluir(aluno);
 		loggerFinhish("excluir");
-	}
-	
-	public List<Alunos> listaAlunosPorNome(String nome) {
-		loggerInit("listaAlunosPorNome");
-		List<Alunos> alunos = alunosDAO.listarPorNome(nome);
-		loggerFinhish("listaAlunosPorNome");
-		return alunos;
 	}
 
 	public void loggerInit(String method) {

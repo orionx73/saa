@@ -1,6 +1,10 @@
 package br.unifor.pin.saa.bussines;
 
+// fazer alterações teste
+
 import java.util.List;
+
+import javax.persistence.NoResultException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,12 +32,12 @@ public class UsuarioBO {
 		usuarioDAO.salvar(usuario);
 		loggerFinhish("salvar");
 	}
-	
-	public void atualizar(Usuarios usuario){
+
+	public void atualizar(Usuarios usuario) {
 		loggerInit("atualizar");
 		usuarioDAO.atualizar(usuario);
 		loggerFinhish("atualizar");
-		
+
 	}
 
 	public List<Usuarios> listaUsuarioPorNome(String nome) {
@@ -42,12 +46,26 @@ public class UsuarioBO {
 		loggerFinhish("listaUsuarioPorNome");
 		return usuarios;
 	}
-	
-	public Usuarios buscarPorId(Integer id){
+
+	public Usuarios buscarPorId(Integer id) {
 		return usuarioDAO.buscaPorId(id);
 	}
-	
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
+
+	public Usuarios logar(String login, String senha) {
+		try {
+			return usuarioDAO.logar(login, senha);
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public Usuarios buscaLogin(String nome) {
+		loggerInit("buscaLogin");
+		loggerFinhish("buscaLogin");
+		return usuarioDAO.buscaLogin(nome);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void excluir(Usuarios usuario) {
 		loggerInit("excluir");
 		usuario = usuarioDAO.buscaPorId(usuario.getId());
@@ -61,10 +79,8 @@ public class UsuarioBO {
 	}
 
 	public void loggerFinhish(String method) {
-		logger.debug("Fim do método "+method+" da classe"
+		logger.debug("Fim do método " + method + " da classe"
 				+ this.getClass().getName());
 	}
-
-
 
 }

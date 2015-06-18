@@ -23,6 +23,8 @@ public class TurmaBO {
 	
 	public void salvar(Turma turma) {
 		loggerInit("salvar");
+		turma.setProfessor(turma.getProfessor());
+		turma.setInstituicao(turma.getInstituicao());
 		turmaDAO.salvar(turma);
 		loggerFinhish("salvar");
 	}
@@ -47,7 +49,7 @@ public class TurmaBO {
 	}
 	
 	public List<Turma> buscarTodos(){
-		return turmaDAO.listarTodas();
+		return turmaDAO.buscarTodos();
 	}
 
 	public void loggerInit(String method) {
@@ -59,6 +61,8 @@ public class TurmaBO {
 		logger.debug("Fim do método "+method+" da classe"
 				+ this.getClass().getName());
 	}
-
-
+	
+	
+	
+	
 }
