@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager.aluno;
+package br.unifor.pin.saa.manager.professor;
 
 import java.util.List;
 
@@ -8,40 +8,35 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.saa.bussines.AlunosBO;
-import br.unifor.pin.saa.entity.Alunos;
+import br.unifor.pin.saa.bussines.ProfessoresBO;
+import br.unifor.pin.saa.entity.Professores;
 import br.unifor.pin.saa.utils.Navigation;
 
-/**
- * @author Alex.torres
- * 
- */
 @RequestScoped
-@ManagedBean(name="listAluno")
-@Component(value="listAluno")
-public class ListAlunoManager {
+@ManagedBean(name="listProfessor")
+@Component(value="listProfessor")
+public class ListProfessorManager {
 
 	@Autowired
-	private AlunosBO alunoBO;
+	private ProfessoresBO professoresBO;
 	private String nome;
 	private String email;
 	private String cpf;
 	private String matricula;
-	private List<Alunos> alunos;
+	private List<Professores> professores;
 	
 	public void lista(){
 		
-		alunos = alunoBO.listaAlunosPorNome(nome);
-		
+		professores = professoresBO.listarProfessorPorNome(nome);		
 	}
 	
-	public void excluir(Alunos aluno){
-		alunoBO.excluir(aluno);
-		alunos = alunoBO.listaAlunosPorNome(nome);
+	public void excluir(Professores professor){
+		professoresBO.excluir(professor);
+		professores = professoresBO.listarProfessorPorNome(nome);
 	}
 	
-	public String preparaAtualizar(Alunos aluno){
-		System.out.println(aluno.getNome());
+	public String preparaAtualizar(Professores professor){
+		System.out.println(professor.getNome());
 		return null;
 	}
 	
@@ -55,24 +50,18 @@ public class ListAlunoManager {
 		this.email="";
 		this.matricula="";
 		this.cpf ="";
-		this.alunos = null;
+		this.professores = null;
 	}
 	
 	
 	public String salvar(){
 		return null;
 	}
-	
-	public List<Alunos> getAlunos() {
-		return alunos;
-	}
-	public void setAlunos(List<Alunos> alunos) {
-		this.alunos = alunos;
-	}
-	
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -100,4 +89,13 @@ public class ListAlunoManager {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
+
+	public List<Professores> getProfessores() {
+		return professores;
+	}
+
+	public void setProfessores(List<Professores> professores) {
+		this.professores = professores;
+	}
+
 }

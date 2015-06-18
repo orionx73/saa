@@ -1,0 +1,52 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formAtualizaAluno">
+			<h2>Atualização de Professores</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
+				<p:outputLabel value="Nome: " />
+				<font color="red">*</font>
+				<p:inputText id="nome" value="#{atualizaProfessor.professorSelecionado.nome}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="nome" />
+
+				<p:outputLabel value="Cpf: " />
+				<font color="red">*</font>
+				<p:inputText id="cpf" value="#{atualizaProfessor.professorSelecionado.cpf}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="cpf" />
+				
+				<p:outputLabel value="Email: " />
+				<font color="red">*</font>
+				<p:inputText id="email" value="#{atualizaProfessor.professorSelecionado.email}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="email" />
+				
+				<p:outputLabel value="Matricula: " />
+				<font color="red">*</font>
+				<p:inputText id="matricula" value="#{atualizaProfessor.professorSelecionado.matricula}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="matricula" />
+
+			</h:panelGrid>
+			<br />
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<p:commandButton value="Voltar"
+					action="#{listProfessor.preparaListar}" ajax="false"
+					immediate="true" />
+				<p:commandButton value="Atualizar" action="#{atualizaProfessor.atualizar}"
+					ajax="false" />
+				<p:commandButton value="Limpar"
+					actionListener="#{atualizaProfessor.limparDados}" update="@form"
+					type="reset" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition> -->

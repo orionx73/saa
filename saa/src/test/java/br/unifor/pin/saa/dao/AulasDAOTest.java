@@ -25,6 +25,8 @@ public class AulasDAOTest {
 	@Test
 	public void testSalvar() {
 		Aulas aulas = new Aulas();
+		aulas.setConteudo("Roteadores");
+		aulas.setDescricao("Algoritmos de roteamento");
 		
 		aulasDAO.salvar(aulas);
 		

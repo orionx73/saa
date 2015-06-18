@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager.aluno;
+package br.unifor.pin.saa.manager.professor;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,23 +6,21 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.saa.bussines.AlunosBO;
-import br.unifor.pin.saa.entity.Alunos;
+import br.unifor.pin.saa.bussines.ProfessoresBO;
+import br.unifor.pin.saa.entity.Professores;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
-/**
- * @author Alex.torres
- * 
- */
+
+
 @RequestScoped
-@ManagedBean(name="cadAluno")
-@Component(value="cadAluno")
-public class CadAlunoManager {
+@ManagedBean(name="cadProfessor")
+@Component(value="cadProfessor")
+public class CadProfessorManager {
 
 	@Autowired
-	private AlunosBO alunoBO;
+	private ProfessoresBO professoresBO;
 	@Autowired
-	private ListAlunoManager listAluno;
+	private ListProfessorManager listAluno;
 	private String nome;
 	private String email;
 	private String cpf;
@@ -30,13 +28,13 @@ public class CadAlunoManager {
 
 
 	public String salvar(){
-		Alunos aluno = new Alunos();
-		aluno.setNome(nome);
-		aluno.setEmail(email);
-		aluno.setMatricula(matricula);
-		aluno.setCpf(cpf);
-		alunoBO.salvar(aluno);
-		MessagesUtils.info("Aluno salvo com sucesso!");
+		Professores professor = new Professores();
+		professor.setNome(nome);
+		professor.setEmail(email);
+		professor.setMatricula(matricula);
+		professor.setCpf(cpf);
+		professoresBO.salvar(professor);
+		MessagesUtils.info("Professor salvo com sucesso!");
 		listAluno.lista();
 		
 		return Navigation.SUCESSO;

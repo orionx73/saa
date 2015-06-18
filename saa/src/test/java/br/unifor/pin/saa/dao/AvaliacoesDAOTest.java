@@ -29,6 +29,7 @@ public class AvaliacoesDAOTest {
 	public void testSalvar() {
 		final Double nota = 9.8;
 		final Boolean aprovado = true;
+		final String comentario = "Boa aula";
 		
 		Avaliacoes avaliacao = new Avaliacoes();
 		Alunos aluno = new Alunos();
@@ -40,6 +41,7 @@ public class AvaliacoesDAOTest {
 		avaliacao.setAluno(aluno);
 		avaliacao.setAprovado(aprovado);
 		avaliacao.setNota(nota);
+		avaliacao.setComentario(comentario);
 		
 		avaliacao.getAluno().setNome("Y");
 		avaliacoesDAO.salvar(avaliacao);

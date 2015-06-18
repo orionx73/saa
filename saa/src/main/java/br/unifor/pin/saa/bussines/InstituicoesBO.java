@@ -1,6 +1,8 @@
 package br.unifor.pin.saa.bussines;
 
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,14 @@ public class InstituicoesBO {
 	
 	public Instituicoes buscarPorId(Long id){
 		return instituicoesDAO.buscarPorId(id);
+	}
+	
+
+	public List<Instituicoes> listaInstituicoesPorNome(String nome) {
+		loggerInit("listaInstituicoesPorNome");
+		List<Instituicoes> instituicoes = instituicoesDAO.listarPorNome(nome);
+		loggerFinhish("listaInstituicoesPorNome");
+		return instituicoes;
 	}
 	
 	public Instituicoes buscarPorNome(String nome) {

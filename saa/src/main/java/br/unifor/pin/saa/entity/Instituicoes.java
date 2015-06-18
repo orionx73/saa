@@ -25,14 +25,14 @@ public class Instituicoes implements Serializable {
 	private String nome;
 	
 	@Column(nullable=false)
+	private String sigla;
+	
+	@Column(nullable=false)
 	private String endereco;
 	
 	@Column(nullable=false)
 	private String telefone;
 	
-	@Column(nullable=false)
-	private String sigla;
-
 	public Long getId() {
 		return id;
 	}
