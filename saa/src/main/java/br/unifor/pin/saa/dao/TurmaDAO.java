@@ -37,11 +37,11 @@ public class TurmaDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Turma> listarTodas(){
+	public List<Turma> buscarTodos(){
 		String jpql = "select t from Turma t";
 		Query query = entityManager.createQuery(jpql);
 		
 		return (List<Turma>)query.getResultList();
 	}
-
+	
 }

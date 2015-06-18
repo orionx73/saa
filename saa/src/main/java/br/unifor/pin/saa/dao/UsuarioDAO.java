@@ -42,6 +42,17 @@ public class UsuarioDAO {
 		return query.getResultList();
 	}
 	
+	public Usuarios buscaLogin(String nome){
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
+		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
+		criteriaQuery.where(criteriaBuilder.like(usuarios.<String>get("nome"), "%"+nome+"%"));
+		
+		Query query = entityManager.createQuery(criteriaQuery);
+		
+		return (Usuarios) query.getSingleResult();
+	}
+	
 	public Usuarios buscaPorId(Integer id) {
 		String jpql = "select u from Usuarios u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);
@@ -50,9 +61,16 @@ public class UsuarioDAO {
 		return (Usuarios) query.getSingleResult();
 	}
 	
+	public Usuarios logar(String login, String senha){
+		String jpql = "select u from Usuarios u where u.email = :email and u.senha = :senha";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("email", login);
+		query.setParameter("senha", senha);
+		
+		return (Usuarios) query.getSingleResult();
+	}
+	
 	public void excluir(Usuarios usuario) {
 		entityManager.remove(usuario);
 	}
-
-
 }

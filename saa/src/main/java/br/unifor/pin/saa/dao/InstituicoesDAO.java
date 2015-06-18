@@ -30,12 +30,12 @@ public class InstituicoesDAO {
 		entityManager.merge(instituicao);
 	}
 	
-	public void excluir(Instituicoes instituicao){
-		entityManager.remove(instituicao);
-	}
-	
-	public Instituicoes buscarPorId(Long id){
-		return entityManager.find(Instituicoes.class, id);
+	@SuppressWarnings("unchecked")
+	public List<Instituicoes> buscarTodos(){
+		String jpql = "select i from Instituicoes i";
+		Query query = entityManager.createQuery(jpql);
+		
+		return (List<Instituicoes>)query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -49,6 +49,14 @@ public class InstituicoesDAO {
 		return query.getResultList();
 	}
 	
+	public void excluir(Instituicoes instituicao){
+		entityManager.remove(instituicao);
+	}
+	
+	public Instituicoes buscarPorId(Long id){
+		return entityManager.find(Instituicoes.class, id);
+	}
+	
 	public Instituicoes buscarPorNome(String nome) {
 		String jpql = "select i from Instituicoes i where i.nome = :nome";
 		Query query = entityManager.createQuery(jpql);
@@ -56,7 +64,5 @@ public class InstituicoesDAO {
 		
 		return (Instituicoes) query.getSingleResult();
 	}
-
-
 
 }

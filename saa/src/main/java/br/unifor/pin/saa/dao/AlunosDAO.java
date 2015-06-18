@@ -1,6 +1,5 @@
 package br.unifor.pin.saa.dao;
 
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -30,14 +29,6 @@ public class AlunosDAO {
 	public void atualizar(Alunos aluno){
 		entityManager.merge(aluno);
 	}
-		
-	public void excluir(Alunos aluno){
-		entityManager.remove(aluno);
-	}
-	
-	public Alunos buscarPorId(Long id){
-		return entityManager.find(Alunos.class, id);
-	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Alunos> listarPorNome(String nome) {
@@ -50,6 +41,14 @@ public class AlunosDAO {
 		return query.getResultList();
 	}
 	
+	public void excluir(Alunos aluno){
+		entityManager.remove(aluno);
+	}
+	
+	public Alunos buscarPorId(Long id){
+		return entityManager.find(Alunos.class, id);
+	}
+	
 	public Alunos buscarPorNome(String nome) {
 		String jpql = "select a from Alunos a where a.nome = :nome";
 		Query query = entityManager.createQuery(jpql);
@@ -57,6 +56,5 @@ public class AlunosDAO {
 		
 		return (Alunos) query.getSingleResult();
 	}
-		
 
 }

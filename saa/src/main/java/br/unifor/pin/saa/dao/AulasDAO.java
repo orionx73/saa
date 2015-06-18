@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.saa.entity.Aulas;
 
+
 @Repository
 @Transactional(propagation=Propagation.REQUIRED)
 public class AulasDAO {
@@ -49,6 +50,12 @@ public class AulasDAO {
 		return query.getResultList();
 	}
 	
-
-
+	@SuppressWarnings("unchecked")
+	public List<Aulas> buscarTodos(){
+		String jpql = "select a from Aulas a";
+		Query query = entityManager.createQuery(jpql);
+		
+		return (List<Aulas>)query.getResultList();
+	}
+	
 }
