@@ -35,10 +35,10 @@ public class CadUsuarioManager {
 		usuario.setSenha(senha);
 
 		if (vinculo.equals("professor")){
-			usuario.setTPUsuario(tipoUsuario.PROFESSOR);
+			usuario.setTPUsuario(TPUsuario.PROFESSOR);
 		}
 		else if (vinculo.equals("aluno")){
-			usuario.setTPUsuario(tipoUsuario.ALUNO);
+			usuario.setTPUsuario(TPUsuario.ALUNO);
 		}
 
 		usuarioBO.salvar(usuario);
