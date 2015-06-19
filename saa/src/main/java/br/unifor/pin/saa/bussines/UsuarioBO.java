@@ -27,7 +27,7 @@ public class UsuarioBO {
 
 	public void salvar(Usuarios usuario) {
 		loggerInit("salvar");
-		usuario.setAtivo(false);
+		usuario.setAtivo(true);
 		usuario.setPrimeiroAcesso(true);
 		usuarioDAO.salvar(usuario);
 		loggerFinhish("salvar");

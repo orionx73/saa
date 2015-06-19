@@ -1,15 +1,19 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #EAECEE;
-	font-family: Verdana, sans-serif;
+	background-color: #90ee90;
+	font-family: Arial, sans-serif;
 	font-size: 10px;
+}
+
+a {
+	text-decoration: none
 }
 
 #header {
 	height: 120px;
 	border-bottom: 3px solid #c0c0c0;
-	background: #204080;
+	background: #008000;
 	text-align: center;
 	color: #f0f0f0;
 	margin: 0;
@@ -17,12 +21,36 @@ body {
 }
 
 #header h1 {
-	padding-top: 24px;
-	font-size: 250%;
+	line-height: 115px;
+	font-size: 33px;
+	letter-spacing: -2px;
+	margin-top: 0;
+}
+
+.ui-selectonemenu {
+	width: 199px !important;
+}
+
+.ui-selectonemenu label {
+	width: 180px !important
+}
+
+.ui-dialog.ui-widget-content {
+	border: none;
+	box-shadow: none;
+}
+
+.ui-widget-header {
+	background-color: #ddd !important;
+}
+
+.ui-shadow {
+	box-shadow: 0 !important;
+	background: #eee !important;
 }
 
 #header a {
-	color : #f0f0f0;
+	color: #f0f0f0;
 }
 
 #page {
@@ -32,14 +60,21 @@ body {
 	margin-right: auto;
 	border-right: solid 2px #a0a0a0;
 	border-bottom: solid 2px #a0a0a0;
+	box-shadow: 0 0 40px #999;
+	border-radius: 15px;
+	overflow: hidden;
+	margin-top: 10px;
+	a0a0a0;
 }
 
 #sidebar {
-	float: right;
-	width: 200px;	
-	border: 1px solid #d0d0d0;
-	min-height: 240px;
-	padding: 4px;
+  float: right;
+  width: 200px;
+  border: 1px solid #d0d0d0;
+  min-height: 345px;
+  margin-top: -6px;
+  margin-left: 4px;
+  padding: 4px;
 }
 
 #sidebar h1 {
@@ -55,7 +90,13 @@ body {
 #content {
 	min-height: 320px;
 	font-size: 120%;
-	width: 720px;
+	width: 100%;
+	margin: 0 auto;
+	margin-right: 20px !important;
+}
+
+#content h2 {
+	text-align: center
 }
 
 #footer {
@@ -63,7 +104,7 @@ body {
 	padding: 8px;
 	margin: 8px;
 	border-top: 1px solid #c0c0c0;
-	clear : both;
+	clear: both;
 }
 
 .panel {
@@ -74,6 +115,10 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
+}
+
+.ui-dialog {
+	position: relative !important
 }
 
 .panel h1 {
@@ -90,6 +135,16 @@ body {
 	margin: 0 auto;
 }
 
+.panelgrid input[type=text], .panelgrid input[type=password] {
+	padding: 4px;
+	margin-bottom: 1px;
+	width: 191px;
+}
+
+.ui-dialog-content input {
+	width: 180px !important;
+}
+
 .odd {
 	background: #f0f0f0;
 }
@@ -101,7 +156,6 @@ body {
 .dataTable {
 	border-collapse: collapse;
 	width: 100%;
-	
 }
 
 .dataTable th {
@@ -127,7 +181,7 @@ body {
 	padding-top: 4px;
 }
 
-.value {	
+.value {
 	margin-right: 8px;
 }
 

@@ -30,7 +30,7 @@ public class LoginManager {
 
 	public String verificaLogin() {
 
-		usuarioTO.setUsuario(usuarioBO.logar(email, senha));
+		usuarioTO.setUsuario(usuarioBO.logar(email,senha));
 
 		if (usuarioTO.getUsuario() != null
 				&& usuarioTO.getUsuario().isAtivo()) {
